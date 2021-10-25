@@ -1,0 +1,48 @@
+form {
+    margin: auto;
+    width: 300px;
+    position: relative;
+    top: 100px;
+    left: 100px;
+    border: 2px solid rosybrown;
+    /* padding: 30px; */
+    border-radius: 10px;
+}
+
+strong {
+    position: relative;
+    left: 40%;
+    margin: 2em 0px;
+    color: grey;
+}
+
+input {
+    margin: 10px 40px;
+}
+
+button {
+    margin: 15px;
+    border: 2px solid cyan;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+/* @media screen and (max-width:425px) {
+    form{
+        margin: auto;
+        position: relative;
+    top: 100px;
+    left: 5px;
+    }
+} */
+
+@media screen and (max-width:768px) {
+    form{
+        margin: auto;
+        position: relative;
+    top: 100px;
+    left: 5px;
+    }
+}
+
+

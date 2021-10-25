@@ -1,0 +1,23 @@
+<!-- <p>edit works!</p> -->
+<h3 class="text-light "><span class="badge bg-success">Edit Course</span></h3><br>
+<form #fdata="ngForm" (ngSubmit)="putData(fdata.value)">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" name="name" class="form-control" #cname="ngModel" [ngModel]="crsArray?.name" required
+            pattern="[A-Z][a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder="Course Name">
+        <div class="text-danger" *ngIf="cname.invalid && cname.touched">
+            <div *ngIf="cname.hasError('required')">Course name required !!</div>
+            <div *ngIf="cname.hasError('pattern')">Course name must be characters only !!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Duration</label>
+        <input type="text" name="duration" class="form-control" #dur="ngModel" [ngModel]="crsArray?.duration" required
+            pattern="[0-9]{1,2}" placeholder="Duration in Month">
+        <div class="text-danger" *ngIf="dur.invalid && dur.touched">
+            <div *ngIf="dur.hasError('required')">Duration required !!</div>
+            <div *ngIf="dur.hasError('pattern')">Duration must be nummeric !!</div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="fdata.invalid">Submit</button>
+</form>

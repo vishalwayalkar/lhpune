@@ -1,0 +1,66 @@
+<!-- <p>dashboard works!</p> -->
+<h3 class="text-light m-auto text-center"><span class="badge bg-secondary">Course - Dashboard</span></h3>
+<div class="row mt-4">
+    <div class="col-md-8 ml-3">
+        <button class="btn btn-outline-primary" [routerLink]='["add"]'><i class="fa fa-plus" aria-hidden="true"></i>
+            Add</button>
+        <!-- ROUTERLINK  -->
+    </div>
+    <!-- [(ngModel)]="term" -->
+    <div class="col-md-3"> <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search"></div>
+</div>
+<hr class="border-secondary" style="border: 2px solid;">
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th (click)="changeOrder('id')">Id</th>
+            <th (click)="changeOrder('name')">Name</th>
+            <th (click)="changeOrder('duration')">Duration</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of course |filter:term | orderBy: order:reverse | paginate: { itemsPerPage: 4, currentPage: p } ">
+            <td>{{c.id}}</td>
+            <td>{{c.name}}</td>
+            <td>{{c.duration}}&nbsp; Month</td>
+            <td>
+                <button class="btn btn-primary" title="view" (click)="openModal(template)"><i class="fa fa-info-circle"
+                        aria-hidden="true"></i>
+                </button> |
+                <div class="btn btn-success" title="edit" [routerLink]="['edit', c.id]"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+                |
+                <div class="btn btn-danger" title="delete" (click)="deletData(c.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+            </td>
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Modal</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>Id:</td>
+                            <td>&nbsp;&nbsp;&nbsp; {{c.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{c.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Pin Code:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{c.duration}}&nbsp; Month</td>
+                        </tr>
+                    </table>
+                </div>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<br>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

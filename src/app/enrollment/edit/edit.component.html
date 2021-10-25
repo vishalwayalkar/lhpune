@@ -1,0 +1,151 @@
+<form #fdata="ngForm" (ngSubmit)="putData(fdata.value)">
+    <div class="form-group">
+        <label for="">Full Name</label>
+        <!-- [ngModel] = "empObj?.name" -->
+        <input type="text" name="fname" #fname="ngModel" class="form-control" [ngModel]="enrollObj?.fname" required
+            pattern="[A-Z][a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder="Full Name">
+        <div class="text-danger" *ngIf="fname.invalid && fname.touched">
+            <div *ngIf="fname.hasError('required')">Name required !!</div>
+            <div *ngIf="fname.hasError('pattern')">Name must be characters only !!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Contact</label>
+        <input type="text" name="contact" #con="ngModel" class="form-control" [ngModel]="enrollObj?.contact" required
+            pattern="[0-9]{10}" placeholder="Contact">
+        <div class="text-danger" *ngIf="con.invalid && con.touched">
+            <div *ngIf="con.hasError('required')">Contact required !!</div>
+            <div *ngIf="con.hasError('pattern')">Contact must be nummeric !!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">EMail</label>
+        <input type="text" name="email" #em="ngModel" class="form-control" [ngModel]="enrollObj?.email" required
+            pattern="[a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder=" you@example.com">
+        <div class="text-danger" *ngIf="em.invalid && em.touched">
+            <div *ngIf="em.hasError('required')">Email required !!</div>
+            <div *ngIf="em.hasError('pattern')">Email must be in proper format !!</div>
+        </div>
+    </div>
+
+
+    <div class="form-inline">
+        <label>Qualification</label>
+        <select name="qualification" #qualification="ngModel" [ngModel]="enrollObj?.qualification" required
+            class="form-control ml-5">
+            <option>Select a Qualification:</option>
+            <option [value]="q" *ngFor="let q of edu">{{q}}</option>
+        </select>
+        <label class="m-auto">Specilization</label>
+        <input type="text" name="Specilization" #sp="ngModel" class="form-control" [ngModel]="enrollObj?.Specilization"
+            required pattern="[a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder="Specialization">
+    </div>
+    <div class="form-inline"><br>
+        <div class="text-danger" style="position: absolute; left: 170px;"
+            *ngIf="qualification.invalid && qualification.touched">
+            <div *ngIf="qualification.hasError('required')">Qualification Required !!</div>
+        </div>
+
+        <div class="text-danger" style="position: relative; left: 680px;" *ngIf="sp.invalid && sp.touched">
+            <div *ngIf="sp.hasError('required')">Specilization required !!</div>
+            <div *ngIf="sp.hasError('pattern')">Specilization must be characters !!</div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="form-inline">
+        <label>Appearing</label><br>
+        <div class="form-check form-check-inline ml-4">
+            <input class="form-check-input form-control" type="radio" name="appearing" [ngModel]="enrollObj.appearing"
+                value="Completed" />
+            <label class="form-check-label">Completed</label>
+        </div>
+        <div class="form-check form-check-inline ml-3">
+            <input class="form-check-input form-control" type="radio" name="appearing" [ngModel]="enrollObj.appearing"
+                value="Appearing" />
+            <label class="form-check-label">Appearing</label>
+        </div>
+        <label class="m-auto">Year Of PAssing</label>
+        <input type="text" name="yop" #year="ngModel" class="form-control" [ngModel]="enrollObj?.yop" required placeholder="Year Of Passing">
+    </div>
+    <div class="text-danger" style="float: right; margin-right: 30px;" *ngIf="year.invalid && year.touched">
+        <div *ngIf="year.hasError('required')">Passing year required !!</div>
+        <div *ngIf="year.hasError('pattern')">Passing year must be nummeric !!</div>
+    </div>
+    <br>
+
+    <div class="form-group">
+        <label for="">College Name</label>
+        <input type="text" name="clgnm" class="form-control" #cname="ngModel" [ngModel]="enrollObj?.clgnm" required
+            pattern="[a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder="College Name">
+        <div class="text-danger" *ngIf="cname.invalid && cname.touched">
+            <div *ngIf="cname.hasError('required')">College name required !!</div>
+            <div *ngIf="cname.hasError('pattern')">College name must be characters only !!</div>
+        </div>
+        <br>
+        <label for="">City</label>
+        <input type="text" name="city" class="form-control" #cty="ngModel" [ngModel]="enrollObj?.city" required
+            pattern="[A-Za-Z]{1,20}$" placeholder="City">
+        <div class="text-danger" *ngIf="cty.invalid && cty.touched">
+            <div *ngIf="cty.hasError('required')">City required !!</div>
+            <div *ngIf="cty.hasError('pattern')">City must be characters only !!</div>
+        </div>
+    </div>
+
+    <div class="form-inline">
+        <label>Work Experiance</label>
+        <select name="workexp" #workexp="ngModel" [ngModel]="enrollObj?.work_exp" required class="form-control ml-5">
+            <option selected>Select a Experiance:</option>
+            <option [value]="e" *ngFor="let e of exp">{{e}}</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-inline">
+        <label>Are you LightHouse Student</label><br>
+        <div class="form-check form-check-inline ml-4">
+            <input class="form-check-input form-control" type="radio" name="org" [ngModel]="enrollObj.org"
+                id="inlineRadio1" value="LightHouse" />
+            <label class="form-check-label" for="inlineRadio1">Yes</label>
+        </div>
+        <div class="form-check form-check-inline ml-3">
+            <input class="form-check-input form-control" type="radio" name="org" [ngModel]="enrollObj.org"
+                id="inlineRadio2" value="Hemitite" />
+            <label class="form-check-label" for="inlineRadio2">No</label>
+        </div>
+        <label class="m-auto">LightHouse Branch</label>
+        <!-- <input type="text" name="branch" class="form-control" ngModel required> -->
+        <select name="branch" #branch="ngModel" [ngModel]="enrollObj?.branch" required class="form-control ml-5">
+            <option>Select a Branch:</option>
+            <option [value]="l.name" *ngFor="let l of lh">{{l.name}}</option>
+        </select>
+    </div><br>
+
+    <div class="form-inline">
+        <label>Course</label>
+        <select name="course" #course="ngModel" [ngModel]="enrollObj?.course" required class="form-control ml-5">
+            <option>Select a Course:</option>
+            <option [value]="c.name" *ngFor="let c of crs">{{c.name}}</option>
+        </select>
+        <label class="m-auto">Batch-Type</label>
+        <select name="batchtype" #batchtype="ngModel" [ngModel]="enrollObj?.batchtype" required
+            class="form-control ml-5">
+            <option>Select a Batch:</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekend">Weekend</option>
+        </select>
+    </div>
+
+    <br><br>
+    <div class="form-group">
+        <label>Referance</label>
+        <select name="ref" #ref="ngModel" [ngModel]="enrollObj?.ref" required class="form-control">
+            <option>Select a Referance:</option>
+            <option [value]="r" *ngFor="let r of referance">{{r}}</option>
+        </select>
+    </div>
+    <br>
+    <!-- [disabled]="fdata.invalid" -->
+    <button class="btn btn-primary" style="float: right;" type="submit">Submit</button>
+</form>
+<br><br>

@@ -1,0 +1,23 @@
+<!-- <p>edit works!</p> -->
+<h3 class="text-light "><span class="badge bg-success">Edit Lighthouse</span></h3><br>
+<form #fdata="ngForm" (ngSubmit)="putData(fdata.value)">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" name="name" #fname="ngModel" class="form-control" [ngModel]="lhArray?.name" required
+            pattern="[A-Z][a-zA-Z][^#&<>\\\~;$^%{}?]{1,20}$" placeholder="LightHouse_Name">
+        <div class="text-danger" *ngIf="fname.invalid && fname.touched">
+            <div *ngIf="fname.hasError('required')">Name required !!</div>
+            <div *ngIf="fname.hasError('pattern')">Name must be characters only !!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Post</label>
+        <input type="text" name="pincode" class="form-control" #code="ngModel" [ngModel]="lhArray?.pincode" required
+            pattern="[0-9]{6}" placeholder="Pin Code">
+        <div class="text-danger" *ngIf="code.invalid && code.touched">
+            <div *ngIf="code.hasError('required')">Pin-code required !!</div>
+            <div *ngIf="code.hasError('pattern')">Pin-code must be nummeric !!</div>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="fdata.invalid">Submit</button>
+</form>

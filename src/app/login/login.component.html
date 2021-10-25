@@ -1,0 +1,25 @@
+<body>
+    <form action="" class="m-auto bg-light">
+        <br>
+        <img class="d-block mx-auto mb-4" src="/src/assets/Images/user-icon_126283-435.svg" alt="" width="72" height="57">
+        <!-- <i class="fa fa-user-circle-o" aria-hidden="true"></i> -->
+
+        <strong class="m-auto">Login</strong>
+        <br><br>
+        <!-- <label>User</label><br> -->
+        <div class="form-inline">
+            <input type="text" class="form-control" name="uname" [(ngModel)]="uname" placeholder="User Name"><br>
+        </div>
+
+        <!-- <label for="">Password</label><br> -->
+        <div class="form-inline">
+            <input type="password" class="form-control" name="upass" [(ngModel)]="upass" placeholder="Password"><br>
+        </div>
+
+        <div class="form-inline">
+            <button type="button" class=" w-100 btn btn-primary" (click)="userLogin()">Submit</button>
+        </div>
+
+    </form>
+
+</body>

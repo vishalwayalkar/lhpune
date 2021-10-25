@@ -1,0 +1,73 @@
+<!-- <div class="container"> -->
+<!-- <div class="row">
+    <div class="col-sm-3" *ngIf="_route.url != '/' ">
+        <nav class="bg-light d-md-block sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/lighthouse">
+                            LightHouse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/courses">
+                            Courses
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/enrollment">
+                            Enrollment
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <canvas class="my-4 w-100" width="200px" height="350px"></canvas>
+        </nav>
+    </div>
+    <div class="col-sm-9">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+<!-- </div> -->
+
+<div class="container">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse show"
+            *ngIf="_route.url != '/' ">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <br>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" routerLink="/lighthouse">
+                            <img src="../../assets/Images/lighthouse-night_1284-11466.jpg" style="border-radius: 50%;"
+                                width="30px" height="30px" alt="">
+                            LightHouse
+                        </a>
+                    </li><br>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/courses">
+                            <img src="../../assets/Images/web-design-concept-with-drawings_1134-77.jpg"
+                                style="border-radius: 50%;" width="30px" height="30px" alt="">
+                            Courses
+                        </a>
+                    </li><br>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/enrollment">
+                            <img src="../../assets/Images/sign-up-text-written-keyboard-button_2227-1693.jpg"
+                                style="border-radius: 50%;" width="30px" height="30px" alt="">
+                            Enrollment
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!-- <br>  -->
+            <hr>
+            <router-outlet></router-outlet>
+            <!-- <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1612" height="680"
+                style="display: block; height: 200px; width: 806px;"></canvas> -->
+        </main>
+    </div>
+</div>

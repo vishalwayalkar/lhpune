@@ -1,0 +1,125 @@
+<!-- <p>dashboard works!</p> -->
+<h3 class="text-light m-auto text-center"><span class="badge bg-secondary">Enrollment - Dashboard</span></h3>
+<div class="row mt-4">
+    <div class="col-md-8 ml-3">
+        <button class="btn btn-outline-primary" [routerLink]='["add"]'><i class="fa fa-plus" aria-hidden="true"></i>
+            Add</button>
+        <!-- ROUTERLINK  -->
+    </div>
+    <!-- [(ngModel)]="term" -->
+    <div class="col-md-3"> <input type="text" class="form-control" [(ngModel)]="term" placeholder="Search"></div>
+</div>
+<hr class="border-secondary" style="border: 2px solid;">
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th (click)="changeOrder('id')">Id</th>
+            <th (click)="changeOrder('name')">Name</th>
+            <th (click)="changeOrder('contact')">Contact</th>
+            <th (click)="changeOrder('branch')">Branch</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of enroll |filter:term | orderBy: order:reverse | paginate: { itemsPerPage: 4, currentPage: p }">
+            <td>{{e.id}}</td>
+            <td>{{e.fname}}</td>
+            <td>{{e.contact}}</td>
+            <td>{{e.branch}}</td>
+            <td>
+                <button class="btn btn-primary" title="view" (click)="openModal(template)"><i class="fa fa-info-circle"
+                        aria-hidden="true"></i>
+                </button>
+                |
+                <div class="btn btn-success" title="edit" [routerLink]="['edit', e.id]"><i class="fa fa-pencil-square-o"
+                        aria-hidden="true"></i></div>
+                |
+                <div class="btn btn-danger" title="delete" (click)="deletData(e.id)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                </div>
+            </td>
+
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Modal</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- This is a modal. -->
+                    <table>
+                        <tr>
+                            <td>Id:</td>
+                            <td>&nbsp;&nbsp;&nbsp; {{e.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.fname}}</td>
+                        </tr>
+                        <tr>
+                            <td>Contact:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.contact}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mail:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Qualification:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.qualification}}</td>
+                        </tr>
+                        <tr>
+                            <td>Specilization:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.Specilization}}</td>
+                        </tr>
+                        <tr>
+                            <td>Appearing:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.appearing}}</td>
+                        </tr>
+                        <tr>
+                            <td>Year Of PAssing:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.yop}}</td>
+                        </tr>
+                        <tr>
+                            <td>College Name:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.clgnm}}</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.city}}</td>
+                        </tr>
+                        <tr>
+                            <td>Work_Experiance:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.work_exp}}</td>
+                        </tr>
+                        <tr>
+                            <td>Organization:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.org}}</td>
+                        </tr>
+                        <tr>
+                            <td>Branch:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.branch}}</td>
+                        </tr>
+                        <tr>
+                            <td>Course:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.course}}</td>
+                        </tr>
+                        <tr>
+                            <td>Referance:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.ref}}</td>
+                        </tr>
+                        <tr>
+                            <td>Batch-Type:</td>
+                            <td>&nbsp;&nbsp;&nbsp;{{e.batchtype}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </ng-template>
+           
+        </tr>
+    </tbody>
+</table>
+<br>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
